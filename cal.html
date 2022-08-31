@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Show Teetimes</title>
+
+    <link rel="stylesheet" href="fullcalendar.css" />
+
+    <script type="text/javascript" src="jquery-1.11.1.min.js?compile=false" ></script>
+
+    <script type="text/javascript" src="fullcalendar.js?compile=false" ></script>
+
+
+</head>
+
+<body class="user-dave&#64;tucanoo.com reloadOnManagedGolfClubChanged pageTeetimeCalendar coursesite_11 user-dave&#64;tucanoo.com">
+
+
+<div id="container" class="footer-fixed">
+
+    <div class="boxed">
+        <div id="content-container">
+            <div id="page-contentx">
+
+
+                <div class="height-wrapper">
+                    <div id="main" role="main">
+                        <div class="contained">
+                            <div id="page-content">
+
+
+
+                                <div class="fluid-container overviewtour" data-help-context="greenfeecalendar">
+                                    <section id="widget-grid" >
+                                        <div class="row">
+                                            <article class="col-sm-12 pad-no">
+                                                <header> </header>
+                                                <!-- wrap div -->
+                                                <div>
+                                                    <div class="inner-spacer">
+                                                        <div>
+                                                            <div id="teeTimeCalendarContainerAlertArea" class="xtsalert col-sm-12 alert alert-info  fade in hideMe">
+                                                                <button id="teeTimeCalendarContainerAlertAreaButton" type="button" class="xtsalert-close-button close" >&times;</button>
+                                                                <div id="alertBody">
+
+                                                                </div>
+                                                            </div>
+                                                            <div id="teeTimeCalendarContainer" ></div><span id="bookingDialogContainer"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <!-- calendar initialization -->
+                                <script type='text/javascript' async="async">
+                                    var calendarElement = jQuery('#teeTimeCalendarContainer');
+                                    var calendarId = 'teeTimeCalendarContainer';
+                                    var alertAreaId = calendarId + 'AlertArea';
+                                    var alertDuration = 10000;
+                                    var orderGroupList = [];
+                                    var lastSelectTime;
+
+                                    $(function() {
+
+                                        // staging
+                                        var xtsCalendar = $(calendarElement).fullCalendar({
+                                            minTime : 6,
+                                            maxTime : 21,
+
+                                            slotMinutes : 2,
+                                            aspectRatio : 2,
+                                            height: function() { return jQuery(window).innerHeight() - jQuery(calendarElement ).position().top - 40 - (jQuery('.navbar-fixed-bottom' ).length > 0 ? jQuery('.navbar-fixed-bottom' ).outerHeight() : 0 ) },
+                                            defaultView : 'agendaDay',
+                                            firstDay: 3,
+                                            firstHour: 12,
+                                            lazyFetching: false,
+                                            daysToShow: 3,
+
+
+                                            selectable: true,
+                                            selectHelper: true,
+                                            select: function(start, end, allDay) {
+                                                if(lastSelectTime == undefined || lastSelectTime + 1000 < new Date().getTime() ) {
+                                                    createBlock(start, end, allDay);
+                                                } else {
+                                                    console.log("Double click registered. Ignore double selecting inbetween 1sec.");
+                                                }
+                                                lastSelectTime = new Date().getTime();
+                                            },
+
+
+                                            header : {
+
+                                                left : "month,agendaWeek,xtsVariableDay,agendaDay prev,next today",
+
+
+                                                center : 'title',
+                                                right : ''
+                                            },
+                                            eventSources : [ {
+                                                url: 'sdata.json',
+                                                type: "GET",
+                                                data: {
+                                                    view: function() { return $(calendarElement ).fullCalendar('getView').name;},
+                                                    compressedView: function() { return ($(calendarElement ).fullCalendar('getView').name == "month");},
+                                                    golfCourseSite : function() { return jQuery('#filter-course-site' ).val();}
+                                                },
+                                                success: (response, a,b) => {
+                                                    return response.data
+                                                },
+                                                error: function(jqXHR) {
+                                                    checkErrorCode(jqXHR);
+                                                }
+                                            }
+
+                                                // , { // Data Source for course time blocks
+                                                //     url: '/information/getCalendarEvents',
+                                                //     type: "GET",
+                                                //     data: {
+                                                //         view: function() { return $(calendarElement ).fullCalendar('getView').name;},
+                                                //         golfCourseSiteId : function() { return jQuery('#filter-course-site' ).val();}
+                                                //     },
+                                                //     error: function(jqXHR) {
+                                                //         checkErrorCode(jqXHR);
+                                                //     }
+                                                // }
+
+                                            ],
+
+                                            monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                                            monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                                            dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                                            dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+                                            titleFormat: {
+                                                month: "MMMM yyyy",
+                                                week: "d [MMM] [ yyyy] {'-'[d MMM] yyyy}",
+                                                day: "d MMMM yyyy",
+                                                xtsVariableDay: "d [MMM] [ yyyy] {'-'[d MMM] yyyy}"
+                                            },
+                                            axisFormat: 'HH:mm',
+                                            buttonText: {
+                                                month: "Month",
+                                                week: "Week",
+                                                agendaDay: "Day",
+                                                xtsVariableDay: "3 Days",
+                                                today: "Today"
+                                            },
+                                            columnFormat: {
+                                                month: "ddd",
+                                                week: "ddd M/d",
+                                                day: "dddd M/d",
+                                                xtsVariableDay: "ddd M/d"
+                                            }
+                                            , allDayText: "All Day"
+                                        });
+
+                                    });
+
+                                </script>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
