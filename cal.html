@@ -64,28 +64,16 @@
                                         // staging
                                         var xtsCalendar = $(calendarElement).fullCalendar({
                                             minTime : 6,
-                                            maxTime : 21,
+                                            maxTime : 9,
 
                                             slotMinutes : 2,
                                             aspectRatio : 2,
                                             height: function() { return jQuery(window).innerHeight() - jQuery(calendarElement ).position().top - 40 - (jQuery('.navbar-fixed-bottom' ).length > 0 ? jQuery('.navbar-fixed-bottom' ).outerHeight() : 0 ) },
                                             defaultView : 'agendaDay',
                                             firstDay: 3,
-                                            firstHour: 12,
+                                            firstHour: 6,
                                             lazyFetching: false,
                                             daysToShow: 3,
-
-
-                                            selectable: true,
-                                            selectHelper: true,
-                                            select: function(start, end, allDay) {
-                                                if(lastSelectTime == undefined || lastSelectTime + 1000 < new Date().getTime() ) {
-                                                    createBlock(start, end, allDay);
-                                                } else {
-                                                    console.log("Double click registered. Ignore double selecting inbetween 1sec.");
-                                                }
-                                                lastSelectTime = new Date().getTime();
-                                            },
 
 
                                             header : {
