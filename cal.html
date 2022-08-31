@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Show Teetimes</title>
-
     <link rel="stylesheet" href="fullcalendar.css" />
 
     <script type="text/javascript" src="jquery-1.11.1.min.js?compile=false" ></script>
 
     <script type="text/javascript" src="fullcalendar.js?compile=false" ></script>
 
-
 </head>
 
-<body class="user-dave&#64;tucanoo.com reloadOnManagedGolfClubChanged pageTeetimeCalendar coursesite_11 user-dave&#64;tucanoo.com">
+<body class="">
 
 
 <div id="container" class="footer-fixed">
@@ -100,32 +97,15 @@
                                                 right : ''
                                             },
                                             eventSources : [ {
-                                                url: 'sdata.json',
+                                                url: 'sdata_minimal.json',
                                                 type: "GET",
                                                 data: {
                                                     view: function() { return $(calendarElement ).fullCalendar('getView').name;},
-                                                    compressedView: function() { return ($(calendarElement ).fullCalendar('getView').name == "month");},
-                                                    golfCourseSite : function() { return jQuery('#filter-course-site' ).val();}
                                                 },
                                                 success: (response, a,b) => {
                                                     return response.data
-                                                },
-                                                error: function(jqXHR) {
-                                                    checkErrorCode(jqXHR);
                                                 }
                                             }
-
-                                                // , { // Data Source for course time blocks
-                                                //     url: '/information/getCalendarEvents',
-                                                //     type: "GET",
-                                                //     data: {
-                                                //         view: function() { return $(calendarElement ).fullCalendar('getView').name;},
-                                                //         golfCourseSiteId : function() { return jQuery('#filter-course-site' ).val();}
-                                                //     },
-                                                //     error: function(jqXHR) {
-                                                //         checkErrorCode(jqXHR);
-                                                //     }
-                                                // }
 
                                             ],
 

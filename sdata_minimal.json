@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "message": "Successfully fetched events for greenfee calendar",
+  "data": [
+    {
+      "id": 2528094,
+      "FREE": true,
+      "title": "06:13",
+      "allDay": false,
+      "start": "2022-09-01T06:13:00.000",
+      "end": "2022-09-01T06:23:00.000"
+    },
+    {
+      "id": 2528093,
+      "FREE": true,
+      "title": "06:13",
+      "allDay": false,
+      "start": "2022-09-01T06:13:00.000",
+      "end": "2022-09-01T06:23:00.000"
+    },
+    {
+      "id": 2528095,
+      "FREE": true,
+      "title": "06:13",
+      "allDay": false,
+      "start": "2022-09-01T06:13:00.000",
+      "end": "2022-09-01T06:23:00.000"
+    },
+    {
+      "id": 2528096,
+      "FREE": true,
+      "title": "06:13",
+      "allDay": false,
+      "start": "2022-09-01T06:13:00.000",
+      "end": "2022-09-01T06:23:00.000"
+    },
+    {
+      "id": 2528098,
+      "FREE": true,
+      "title": "06:23",
+      "allDay": false,
+      "start": "2022-09-01T06:23:00.000",
+      "end": "2022-09-01T06:33:00.000"
+    },
+    {
+      "id": 2528100,
+      "FREE": true,
+      "title": "06:23",
+      "allDay": false,
+      "start": "2022-09-01T06:23:00.000",
+      "end": "2022-09-01T06:33:00.000"
+    },
+    {
+      "id": 2528097,
+      "FREE": true,
+      "title": "06:23",
+      "allDay": false,
+      "start": "2022-09-01T06:23:00.000",
+      "end": "2022-09-01T06:33:00.000"
+    },
+    {
+      "id": 2528099,
+      "FREE": true,
+      "title": "06:23",
+      "allDay": false,
+      "start": "2022-09-01T06:23:00.000",
+      "end": "2022-09-01T06:33:00.000"
+    }
+  ]
+}
